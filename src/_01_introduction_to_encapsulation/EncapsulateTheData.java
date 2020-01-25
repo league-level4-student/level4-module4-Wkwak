@@ -2,6 +2,8 @@ package _01_introduction_to_encapsulation;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import org.junit.Test;
+
 /*
  * Encapsulation is a way of protecting the data in a class from being
  * unintentionally altered from another class.
@@ -29,7 +31,9 @@ public class EncapsulateTheData {
 	private String nomenclature = " "; // must not be set to a blank string. Blank Strings get set to a space
 	private Object memberObj; // must not be a String. If it is a String, set it equal to a new Object();
 
-	public static void main(String[] args) {
+	@Test
+	
+	public void test() {
 		EncapsulateTheData e = new EncapsulateTheData();
 
 		// items received
@@ -76,8 +80,8 @@ public class EncapsulateTheData {
 		if (degreesTurned < 0.0) {
 			degreesTurned = 0;
 		}
-		else if (this.degreesTurned > 360.0) {
-			this.degreesTurned = 360;
+		else if (degreesTurned > 360.0) {
+			degreesTurned = 360;
 		}
 		this.degreesTurned = degreesTurned;
 	}

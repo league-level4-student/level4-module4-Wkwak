@@ -1,15 +1,23 @@
 package _03_polymorphs;
+
 import java.awt.Color;
 import java.awt.Graphics;
 
-public class MovingMorph extends Polymorph{
-		
+public class MovingMorph extends Polymorph {
+	private int speed;
+
 	public MovingMorph(int x, int y) {
-		super(x,y);
+		super(x, y);
+		speed = 20;
 	}
-	
+
 	public void update() {
-		y+=(10)*Math.random();
+		super.setX(super.getX() + speed);
+		if (super.getX() > PolymorphWindow.WIDTH - 450) {
+			speed = -speed;
+		} else if (super.getX() < 0) {
+			speed = -speed;
+		}
 	}
 
 	@Override

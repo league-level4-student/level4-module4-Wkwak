@@ -7,8 +7,9 @@ public abstract class Polymorph {
 	private int y;
 	private int width;
 	private int height;
+	
 
-	Polymorph(int x, int y) {
+	protected Polymorph(int x, int y) {
 		this.x = x;
 		this.y = y;
 		this.width = 50;
@@ -52,4 +53,5 @@ public abstract class Polymorph {
 	public void setWidth(int width) {
 		this.width = width;
 	}
+	
 }

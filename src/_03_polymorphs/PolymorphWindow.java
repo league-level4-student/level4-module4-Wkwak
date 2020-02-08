@@ -5,6 +5,7 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseListener;
 import java.util.ArrayList;
 
 import javax.swing.JFrame;
@@ -18,14 +19,6 @@ public class PolymorphWindow extends JPanel implements ActionListener {
 
 	private JFrame window;
 	private Timer timer;
-	
-
-
-//	7. Let's create more Polymorphs! Create a new sub-class of Polymorphs for each of the following…
-//		a) Create a Polymorph that moves in a circle. hint: Math.sin() Math.cos()
-//		b) Create a Polymorph that follows your mouse.
-//		c) Create a Polymorph that displays an image.
-//		d) Create a Polymorph that displays a JOptionPane message dialog when clicked.
 
 
 	public static void main(String[] args) {
@@ -42,12 +35,14 @@ public class PolymorphWindow extends JPanel implements ActionListener {
 
 		timer = new Timer(1000 / 30, this);
 		timer.start();
+		MousePolymorph mp = new MousePolymorph(234, 234);
+		window.addMouseMotionListener(mp);
 		
 		polys  = new ArrayList<Polymorph>();
 		polys.add(new MovingMorph(60,60));
 		polys.add(new CircleMorph(123,123));
-		polys.add(new MousePolymorph(234,234));
-		polys.add(new ImageMorph(300,300));
+		polys.add(mp);
+		polys.add(new ImageMorph(250,250));
 		polys.add(new MessageMorph(200, 200));
 		
 	}
@@ -61,6 +56,7 @@ public class PolymorphWindow extends JPanel implements ActionListener {
 		for(Polymorph p:polys) {
 			p.draw(g);
 		}
+	
 	}
 
 	@Override
@@ -70,4 +66,5 @@ public class PolymorphWindow extends JPanel implements ActionListener {
 			p.update();
 		}
 	}
+
 }

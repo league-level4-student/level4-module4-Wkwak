@@ -92,7 +92,7 @@ public class HospitalTest extends TestCase {
 		} catch (DoctorFullException dfe) {
 			assertTrue(true);
 		}
-assertTrue(testDoctor.getPatients().size() == 3);
+		assertTrue(testDoctor.getPatients().size() == 3);
 	}
 
 	public void test8Patients() throws Exception {
@@ -108,7 +108,5 @@ assertTrue(testDoctor.getPatients().size() == 3);
 		assertEquals(3, testDoctors.get(1).getPatients().size());
 		assertEquals(2, testDoctors.get(2).getPatients().size());
 	}
-
-
 
 }

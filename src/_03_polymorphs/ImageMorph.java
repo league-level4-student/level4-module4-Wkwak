@@ -1,35 +1,35 @@
 package _03_polymorphs;
+
 import java.awt.Dimension;
+import javax.imageio.ImageIO;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 
-import javax.imageio.ImageIO;
-import javax.swing.ImageIcon;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
+public class ImageMorph extends Polymorph {
 
-public class ImageMorph extends Polymorph{
+	private BufferedImage img;
 
 	ImageMorph(int x, int y) {
+		
 		super(x, y);
 		// TODO Auto-generated constructor stub
-		JFrame frame = new JFrame();
-		frame.setPreferredSize(new Dimension (getWidth(), getHeight()));
-		ImageIcon icon = new ImageIcon("dogImage.jpeg");
-		JLabel label = new JLabel(icon);
-		frame.add(label);
+
+		try {
 		
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.pack();
-		frame.setVisible(true);
+			img = ImageIO.read(this.getClass().getResourceAsStream("dogImage.jpeg"));
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+
 	}
-	
+
 	public void draw(Graphics g) {
-		
+		g.drawImage(img, super.getX(), super.getY(), super.getWidth(), super.getHeight(), null);
+
 	}
-	
+
 	public void update() {
-		
+
 	}
 
 }

@@ -20,7 +20,6 @@ public class PolymorphWindow extends JPanel implements ActionListener {
 	private JFrame window;
 	private Timer timer;
 
-
 	public static void main(String[] args) {
 		new PolymorphWindow().buildWindow();
 	}
@@ -34,17 +33,20 @@ public class PolymorphWindow extends JPanel implements ActionListener {
 		window.setVisible(true);
 
 		timer = new Timer(1000 / 30, this);
-		timer.start();
+
 		MousePolymorph mp = new MousePolymorph(234, 234);
+		MessageMorph mm = new MessageMorph(200,200);
 		window.addMouseMotionListener(mp);
-		
-		polys  = new ArrayList<Polymorph>();
-		polys.add(new MovingMorph(60,60));
-		polys.add(new CircleMorph(123,123));
+		window.addMouseListener(mm);
+
+		polys = new ArrayList<Polymorph>();
+		polys.add(new MovingMorph(60, 60));
+		polys.add(new CircleMorph(123, 123));
 		polys.add(mp);
-		polys.add(new ImageMorph(250,250));
-		polys.add(new MessageMorph(200, 200));
-		
+		polys.add(new ImageMorph(250, 250));
+		polys.add(mm);
+
+		timer.start();
 	}
 
 	public void paintComponent(Graphics g) {
@@ -53,16 +55,17 @@ public class PolymorphWindow extends JPanel implements ActionListener {
 		g.fillRect(0, 0, 500, 500);
 
 		// draw polymorph
-		for(Polymorph p:polys) {
+		for (Polymorph p : polys) {
 			p.draw(g);
+
 		}
-	
+
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		repaint();
-		for(Polymorph p:polys) {
+		for (Polymorph p : polys) {
 			p.update();
 		}
 	}

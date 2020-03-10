@@ -7,12 +7,18 @@ public class Hospital {
 
 	private ArrayList<Doctor> doctors = new ArrayList<Doctor>();
 	private ArrayList<Patient> patients = new ArrayList<Patient>();
-	
+
 	public void addDoctor(GeneralPractitioner generalPractitioner) {
 		// TODO Auto-generated method stub
 		Doctor doctor = new GeneralPractitioner();
 		generalPractitioner = (GeneralPractitioner) doctor;
 		doctors.add(generalPractitioner);
+	}
+
+	public void addDoctor(Surgeon surgeon) {
+		Doctor doctor = new Surgeon();
+		surgeon = (Surgeon) doctor;
+		doctors.add(surgeon);
 	}
 
 	public void addPatient(Patient patient) {
@@ -32,11 +38,23 @@ public class Hospital {
 
 	public void assignPatientsToDoctors() {
 		// TODO Auto-generated method stub
-		for (Doctor d: doctors) {
-			if(d.currentPatients.size()<3) {
-				//list of patients to add afasdfsdfasdf
-				d.assignPatient(patients.get(index));
+		int x = 0;
+		for (Doctor d : doctors) {
+			while (x < patients.size()) {
+				if(d.getPatients().size()<3) {
+					try {
+						d.assignPatient(patients.get(x));
+					} catch (Exception e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					} 
+					x++;
+				}
+				else {
+					break;
+				}
 			}
 		}
 	}
+
 }
